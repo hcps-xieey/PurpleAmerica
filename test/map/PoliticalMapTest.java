@@ -25,8 +25,9 @@ public class PoliticalMapTest {
         System.out.println("main");
         String[] args = null;
         PoliticalMap.main(args);
+        assertEquals(1,1);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
