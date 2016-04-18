@@ -14,11 +14,11 @@ package map;
 import edu.princeton.cs.introcs.*;
 /**
  *
- * @author cmneville
+ * @author 
  */
 public class PoliticalMap {
     public static void main(String[] args){
-        StdDraw.setCanvasSize(1000, 1000);// set the size of the window.
+        
         
     }
 }
