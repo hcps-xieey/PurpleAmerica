@@ -11,6 +11,8 @@
  *
  */
 package map;
+import edu.princeton.cs.introcs.StdDraw;
+import static edu.princeton.cs.introcs.StdDraw.setCanvasSize;
 import static edu.princeton.cs.introcs.StdDraw.setCanvasSize;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,12 +28,14 @@ public class PoliticalMap {
     public static void main(String[] args) throws FileNotFoundException, URISyntaxException{
         File test = new File(PoliticalMap.class.getResource("/map/USA.txt").toURI()); 
         Scanner sc = new Scanner(test); 
-        sc.nextInt(); 
-        sc.nextInt(); 
-        sc.nextInt(); 
-        sc.nextInt(); 
+        sc.nextDouble(); 
+        sc.nextDouble();
+        sc.nextDouble();
+        sc.nextDouble();
         sc.nextInt(); 
         
+        sc.nextLine(); 
+        sc.nextLine();
         sc.nextLine();
         sc.nextLine();
         sc.nextInt(); 
@@ -41,12 +45,18 @@ public class PoliticalMap {
         double input; 
         int counter = 0; 
         while(sc.hasNextDouble()){
-            input = sc.nextInt(); 
+            input = sc.nextDouble(); 
+            input = input + 100; 
+            input = input/1000; 
             ary[counter] = input; 
-            input = sc.nextInt(); 
+            input = sc.nextDouble(); 
+            input = input + 100; 
+            input = input/1000; 
             ary2[counter] = input; 
-            counter ++; 
+            counter++; 
         }
+        
+        StdDraw.polygon(ary, ary2); 
         
         setCanvasSize(1000,1000); 
         
