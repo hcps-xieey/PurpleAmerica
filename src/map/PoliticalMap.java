@@ -43,15 +43,20 @@ public class PoliticalMap {
         double[] ary = new double[10000];
         double[] ary2 = new double[10000]; 
         double input; 
+        double smallestX = 0; 
+        double smallestY = 0; 
         int counter = 0; 
+        
         while(sc.hasNextDouble()){
             input = sc.nextDouble(); 
-            input = input + 100; 
-            input = input/1000; 
+            if(input < smallestX){
+                smallestX = input; 
+            }
             ary[counter] = input; 
-            input = sc.nextDouble(); 
-            input = input + 100; 
-            input = input/1000; 
+            input = sc.nextDouble();  
+            if(input < smallestY){
+                smallestY = input; 
+            }
             ary2[counter] = input; 
             counter++; 
         }
