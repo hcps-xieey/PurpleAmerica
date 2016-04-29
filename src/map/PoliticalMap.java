@@ -44,7 +44,7 @@ public class PoliticalMap {
         double[] ary2 = new double[10000]; 
         double input; 
         double smallestX = 0; 
-        double smallestY = 0; 
+        double smallestY = 100; 
         int counter = 0; 
         
         while(sc.hasNextDouble()){
@@ -61,9 +61,13 @@ public class PoliticalMap {
             counter++; 
         }
         
+        for(int i = 0; i < counter; i++){
+            
+        }
+        setCanvasSize(500,500);
         StdDraw.polygon(ary, ary2); 
         
-        setCanvasSize(1000,1000); 
+
         
     }
 }
