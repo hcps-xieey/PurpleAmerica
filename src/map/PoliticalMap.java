@@ -12,62 +12,80 @@
  */
 package map;
 import edu.princeton.cs.introcs.StdDraw;
-import static edu.princeton.cs.introcs.StdDraw.setCanvasSize;
-import static edu.princeton.cs.introcs.StdDraw.setCanvasSize;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  *
  * @author 
  */
 public class PoliticalMap {
-    public static void main(String[] args) throws FileNotFoundException, URISyntaxException{
-        File test = new File(PoliticalMap.class.getResource("/map/USA.txt").toURI()); 
-        Scanner sc = new Scanner(test); 
-        sc.nextDouble(); 
-        sc.nextDouble();
-        sc.nextDouble();
-        sc.nextDouble();
-        sc.nextInt(); 
-        
-        sc.nextLine(); 
-        sc.nextLine();
-        sc.nextLine();
-        sc.nextLine();
-        sc.nextInt(); 
-        
-        double[] ary = new double[10000];
-        double[] ary2 = new double[10000]; 
-        double input; 
-        double smallestX = 0; 
-        double smallestY = 100; 
-        int counter = 0; 
-        
-        while(sc.hasNextDouble()){
-            input = sc.nextDouble(); 
-            if(input < smallestX){
-                smallestX = input; 
-            }
-            ary[counter] = input; 
-            input = sc.nextDouble();  
-            if(input < smallestY){
-                smallestY = input; 
-            }
-            ary2[counter] = input; 
-            counter++; 
-        }
-        
-        for(int i = 0; i < counter; i++){
-            
-        }
-        setCanvasSize(500,500);
-        StdDraw.polygon(ary, ary2); 
-        
+    public static void main(String[] args) throws Exception{
+          
+        File file = new File("src/map/USA.txt");
+        File file2 = new File("src/data/USA2012.txt"); 
+        Scanner scan = new Scanner(file);
+        double minX = scan.nextDouble(); 
+        double minY = scan.nextDouble(); 
+        double mostX = scan.nextDouble(); 
+        double mostY = scan.nextDouble(); 
+        StdDraw.setCanvasSize(1100, 700);
+        StdDraw.setXscale(minX, mostX);
+        StdDraw.setYscale(minY, mostY);
+        double[] x;
+        double[] y;     
+        int terNum;
+        int i = 0;
+        StdDraw.setPenColor(StdDraw.BLUE);
 
+        /*
+        while(scan.hasNext()){
+            try{
+                terNum = scan.nextInt();
+                x = new double[terNum];
+                y = new double[terNum];
+                for(i = 0; i < terNum; i++){
+                  scan.nextLine();
+                    x[i] = scan.nextDouble();
+                    y[i] = scan.nextDouble();
+                }
+                StdDraw.filledPolygon(x, y);
+
+            }catch(InputMismatchException e){
+               scan.nextLine();
+            }
+
+        }
+        scan = new Scanner(file);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        while(scan.hasNext()){
+            try{
+                terNum = scan.nextInt();
+                x = new double[terNum];
+                y = new double[terNum];
+                for(i = 0; i < terNum; i++){
+                    scan.nextLine();
+                    x[i] = scan.nextDouble();
+                    y[i] = scan.nextDouble();
+                }
+                  StdDraw.polygon(x, y);
+
+            }catch(InputMismatchException e){
+                scan.nextLine();
+            }
+
+        }*/
+        
+        Scanner sc = new Scanner(file2); 
+        sc.nextLine(); 
+        String testInput = sc.next();
+        String[] ary = testInput.split(",");
+        int a1 = Integer.parseInt(ary[1]); 
+        int a2 = Integer.parseInt(ary[2]);
+        int a3 = Integer.parseInt(ary[3]); 
+        String R; 
+        String G;
+        String B; 
         
     }
 }
