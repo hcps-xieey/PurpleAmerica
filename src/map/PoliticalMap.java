@@ -80,9 +80,13 @@ public class PoliticalMap {
         sc.nextLine(); 
         String testInput = sc.next();
         String[] ary = testInput.split(",");
-        int a1 = Integer.parseInt(ary[1]); 
-        int a2 = Integer.parseInt(ary[2]);
-        int a3 = Integer.parseInt(ary[3]); 
+        double a1 = (double)(Integer.parseInt(ary[1])); 
+        double a2 = (double)(Integer.parseInt(ary[2]));
+        double a3 = (double)(Integer.parseInt(ary[3])); 
+        double r = ((a1)/(a1 + a2 + a3));
+        double g = ((a2)/(a1 + a2 + a3));
+        double b = ((a3)/(a1 + a2 + a3));
+        System.out.println(r + ", " + g + ", " + b); 
         String R; 
         String G;
         String B; 
