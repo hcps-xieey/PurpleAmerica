@@ -23,6 +23,7 @@ public class PoliticalMap {
     public static void main(String[] args) throws Exception{
           
         File file = new File("src/map/USA.txt");
+        File file2 = new File("src/data/USA2012.txt"); 
         Scanner scan = new Scanner(file);
         double minX = scan.nextDouble(); 
         double minY = scan.nextDouble(); 
@@ -75,7 +76,6 @@ public class PoliticalMap {
 
         }
         
-        File file2 = new File("src/data/USA2012.txt"); 
         Scanner sc = new Scanner(file2); 
         sc.nextLine(); 
         String testInput = sc.next();
@@ -83,10 +83,15 @@ public class PoliticalMap {
         double a1 = (double)(Integer.parseInt(ary[1])); 
         double a2 = (double)(Integer.parseInt(ary[2]));
         double a3 = (double)(Integer.parseInt(ary[3])); 
+        System.out.println(a1);
+        System.out.println(a2);
+        System.out.println(a3);
         double r = ((a1)/(a1 + a2 + a3));
         double g = ((a2)/(a1 + a2 + a3));
-        double b = ((a3)/(a1 + a2 + a3));
-        System.out.println(r + ", " + g + ", " + b); 
-        
+        double b = ((a3)/(a1 + a2 + a3)); 
+        int red = (int)(r*255); 
+        int green = (int)(g*255);
+        int blue = (int)(b*255); 
+        System.out.println(red + ", " + green + ", " + blue);
     }
 }
