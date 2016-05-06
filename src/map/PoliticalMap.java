@@ -87,9 +87,6 @@ public class PoliticalMap {
         double g = ((a2)/(a1 + a2 + a3));
         double b = ((a3)/(a1 + a2 + a3));
         System.out.println(r + ", " + g + ", " + b); 
-        String R; 
-        String G;
-        String B; 
         
     }
 }
