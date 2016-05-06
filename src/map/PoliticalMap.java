@@ -23,7 +23,6 @@ public class PoliticalMap {
     public static void main(String[] args) throws Exception{
           
         File file = new File("src/map/USA.txt");
-        File file2 = new File("src/data/USA2012.txt"); 
         Scanner scan = new Scanner(file);
         double minX = scan.nextDouble(); 
         double minY = scan.nextDouble(); 
@@ -38,7 +37,7 @@ public class PoliticalMap {
         int i = 0;
         StdDraw.setPenColor(StdDraw.BLUE);
 
-        /*
+        
         while(scan.hasNext()){
             try{
                 terNum = scan.nextInt();
@@ -74,8 +73,9 @@ public class PoliticalMap {
                 scan.nextLine();
             }
 
-        }*/
+        }
         
+        File file2 = new File("src/data/USA2012.txt"); 
         Scanner sc = new Scanner(file2); 
         sc.nextLine(); 
         String testInput = sc.next();
