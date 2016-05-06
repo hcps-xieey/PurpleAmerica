@@ -24,8 +24,7 @@ import java.util.*;
 public class PoliticalMap {
     public static void main(String[] args) throws Exception{
          
-          
-        
+     CountiesMap counties = new CountiesMap();    
      File file = new File("src/map/USA.txt");
      Scanner scan = new Scanner(file);
      double minX = scan.nextDouble(); 
