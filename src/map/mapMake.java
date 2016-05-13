@@ -33,7 +33,11 @@ public class mapMake {
      double red; 
      double green; 
      double blue;
+    int electionNum = 0;
+    String[] stateName;
+    int[][] votes;             
      double sum;
+     File election;
     
     public mapMake(File f, File e) throws FileNotFoundException{
      scan = new Scanner(f);
@@ -46,44 +50,91 @@ public class mapMake {
      StdDraw.setYscale(minY, mostY);
      scanColor = new Scanner(e);     
      file = f;
-     scanColor.nextLine();
+     election = e;
      
     }
     
+    String state;
+    int p = 0;
+    int stateNum;
+    String[] stateAry;
+    int voteNum;
+    
     public void mapColor() throws FileNotFoundException{
+        scan = new Scanner(file);
+        scan.nextLine();
+        scan.nextLine();
+        stateNum = scan.nextInt();
+        stateAry = new String[stateNum];
+        scan.nextLine();        
+        scan.nextLine();
         while(scan.hasNext()){
             try{
+                state = scan.nextLine();
+                stateAry[p] = state;
+                p++;
+                scan.nextLine();
                 terNum = scan.nextInt();
                 x = new double[terNum];
                 y = new double[terNum];
                 for(i = 0; i < terNum; i++){
-                   scan.nextLine();
-                   x[i] = scan.nextDouble();
-                   y[i] = scan.nextDouble();
+                    scan.nextLine();
+                    x[i] = scan.nextDouble();
+                    y[i] = scan.nextDouble();
                 }
                 
-                sVotes = scanColor.next();
-                ary = sVotes.split(",");
-                ary2[0] = Double.parseDouble(ary[1]);
-                ary2[1] = Double.parseDouble(ary[2]);
-                ary2[2] = Double.parseDouble(ary[3]);
-                sum = ary2[0] + ary2[1] + ary2[2];
-                
-                red = 225.0 * ary2[0]/sum;
-                blue = 225.0 * ary2[1]/sum;
-                green = 225.0 * ary2[2]/sum;
-                StdDraw.setPenColor((int)red,(int)green,(int)blue);
-                
+                for(i=0; i < stateName.length; i++){
+                    if(state.equals(stateName[i])){
+                        voteNum = i;
+                    }
+                }
+                StdDraw.setPenColor(votes[voteNum][0], votes[voteNum][2], votes[voteNum][1]);
                 StdDraw.filledPolygon(x, y);
-
+                scan.nextLine();
+                scan.nextLine();
             }catch(InputMismatchException e){
                scan.nextLine();
-            }        
+            }
         }
      scan = new Scanner(file);       
     }
     
-    public void mapBorder(){
+
+    public void getVotes(File f) throws FileNotFoundException{
+        scanColor = new Scanner(f);
+        scanColor.nextLine();
+        i = 0;
+        
+        while(scanColor.hasNext()){
+            electionNum++;
+            scanColor.nextLine();            
+        }
+        votes = new int[electionNum][3];
+        stateName = new String[electionNum];
+        scanColor = new Scanner(f);
+        scanColor.nextLine();        
+        
+        while(scanColor.hasNext()){
+            sVotes = scanColor.nextLine();
+            ary = sVotes.split(",");
+            stateName[i] = ary[0];
+            
+            ary2[0] = Double.parseDouble(ary[1]);
+            ary2[1] = Double.parseDouble(ary[2]);
+            ary2[2] = Double.parseDouble(ary[3]);
+            sum = ary2[0] + ary2[1] + ary2[2];
+            votes[i][0] = (int) (225.0 * ary2[0]/sum);//red
+            votes[i][1] = (int) (225.0 * ary2[1]/sum);//blue
+            votes[i][2] = (int) (225.0 * ary2[2]/sum);//green            
+            i++;
+        }
+              
+            StdDraw.setPenColor((int)red,(int)green,(int)blue);
+    }
+    
+    
+    public void mapBorder()throws FileNotFoundException{
+        scan = new Scanner(file);               
         StdDraw.setPenColor(StdDraw.BLACK);
         while(scan.hasNext()){
          try{
@@ -101,7 +152,8 @@ public class mapMake {
             scan.nextLine();
          }
          
-        }    
+        }  
+
     }
     
      

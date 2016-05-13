@@ -24,10 +24,11 @@ public class PoliticalMap {
     File file = new File("src/map/USA.txt");
     File elect = new File("src/data/USA2012.txt");
    
-    mapMake map = new mapMake(file, elect);    
+    mapMake map = new mapMake(file, elect);  
+    map.getVotes(elect);
     map.mapColor();
     map.mapBorder();
-    
+    //HELLO WORLD
 
 
      
