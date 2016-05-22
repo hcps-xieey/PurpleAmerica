@@ -10,6 +10,7 @@ import edu.princeton.cs.introcs.StdDraw;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+
 /**
  *
  * @author hcps-sreekeshs
@@ -38,18 +39,20 @@ public class CountiesMap {
      double sum;
      File election;
     
-    public void CountiesMap(File f, File e) throws FileNotFoundException{
+    public CountiesMap (File f, File e) throws FileNotFoundException{
      scan = new Scanner(f);
      minX = scan.nextDouble();
      minY = scan.nextDouble();
      mostX = scan.nextDouble();
      mostY = scan.nextDouble();
-     StdDraw.setCanvasSize(1100, 700);
-     StdDraw.setXscale(minX, mostX);
-     StdDraw.setYscale(minY, mostY);
+     
+     
+     //StdDraw.setCanvasSize(1100, 700);
+     //StdDraw.setXscale(minX, mostX);
+     //StdDraw.setYscale(minY, mostY);
      scanColor = new Scanner(e);     
-     file = new File("src/data/AL.txt");
-     election = new File ("src/data/AL2012.txt");
+     file = f;
+     election = e;
      
     }
     
@@ -59,8 +62,8 @@ public class CountiesMap {
     String[] stateAry;
     int voteNum;
     
-    public void mapColor() throws Exception{
-        scan = new Scanner("src/data/AL2012.txt");
+    public void mapColor() throws FileNotFoundException{
+        scan = new Scanner(file);
         scan.nextLine();
         scan.nextLine();
         stateNum = scan.nextInt();
@@ -132,8 +135,8 @@ public class CountiesMap {
     }
     
     
-    public void mapBorder()throws Exception{
-        scan = new Scanner("scr/data/AL.txt");               
+    public void mapBorder()throws FileNotFoundException{
+        scan = new Scanner(file);               
         StdDraw.setPenColor(StdDraw.BLACK);
         while(scan.hasNext()){
          try{
@@ -153,6 +156,6 @@ public class CountiesMap {
          
         }  
 
-    }
+    }   
     
 }
