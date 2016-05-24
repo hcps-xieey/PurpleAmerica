@@ -20,6 +20,7 @@ import java.util.*;
  */
 public class PoliticalMap {
     public static void main(String[] args) throws Exception{
+    boolean isLoui = false;
         
     File file = new File("src/map/USA.txt");
     File elect = new File("src/data/USA2012.txt");
@@ -62,20 +63,35 @@ public class PoliticalMap {
     
     
     StdDraw.setCanvasSize(1100, 700);
-     
-    mapMake map = new mapMake(file, elect);  
-    map.getVotes(elect);
-    map.mapColor();
-    map.mapBorder();
- 
-    // Calls strState and calls methods involed from CountiesMap class.   
-    for (int i=0;i<strState.length;i++){
-        File countyFile = new File ("src/data/" + strState[i]+ ".txt");
-        File countyVotes = new File ("src/data/"+ strState[i]+ finalYear);
-        CountiesMap county = new CountiesMap(countyFile,countyVotes); 
-        county.getVotes(countyVotes);
-        county.mapColor(); 
-        county.mapBorder();
-    } 
+    boolean counties = false;
+    
+    System.out.println("Do you want to the the USA with counties?(y/n)");
+    String desc = sc.next();
+    if(desc.equals("y") || desc.equals("yes")){
+        counties = true;
+    }
+    
+        mapMake map = new mapMake(file, elect);      
+    
+    if(!counties){
+        map.getVotes(elect);
+        map.mapColor();
+        map.mapBorder();
+    }
+    // Calls strState and calls methods involed from CountiesMap class.  
+    if(counties){
+        for (int i=0;i<strState.length;i++){
+            if(strState[i].equals("LA")){
+                isLoui = true;
+            }
+            File countyFile = new File ("src/data/" + strState[i]+ ".txt");
+            File countyVotes = new File ("src/data/"+ strState[i]+ finalYear);
+            CountiesMap county = new CountiesMap(countyFile,countyVotes); 
+            county.getVotes(countyVotes, isLoui);
+            county.mapColor(); 
+            //county.mapBorder();
+            isLoui = false;
+        } 
+    }
   }
 }
