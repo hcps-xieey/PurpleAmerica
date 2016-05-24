@@ -36,9 +36,15 @@ public class mapMake {
     int electionNum = 0;
     String[] stateName;
     int[][] votes;             
-     double sum;
-     File election;
-    
+    double sum;
+    File election;
+    String year = "2012";
+    String state;
+    String county;
+    int p = 0;
+    int stateNum;
+    int voteNum;
+    File file2;
     public mapMake(File f, File e) throws FileNotFoundException{
      scan = new Scanner(f);
      minX = scan.nextDouble();
@@ -54,26 +60,18 @@ public class mapMake {
      
     }
     
-    String state;
-    int p = 0;
-    int stateNum;
-    String[] stateAry;
-    int voteNum;
-    
+
     public void mapColor() throws FileNotFoundException{
         scan = new Scanner(file);
         scan.nextLine();
         scan.nextLine();
         stateNum = scan.nextInt();
-        stateAry = new String[stateNum];
         scan.nextLine();        
         scan.nextLine();
         while(scan.hasNext()){
             try{
                 state = scan.nextLine();
-                stateAry[p] = state;
-                p++;
-                scan.nextLine();
+                county = scan.nextLine();
                 terNum = scan.nextInt();
                 x = new double[terNum];
                 y = new double[terNum];
@@ -82,7 +80,7 @@ public class mapMake {
                     x[i] = scan.nextDouble();
                     y[i] = scan.nextDouble();
                 }
-                
+                i = 0;
                 for(i=0; i < stateName.length; i++){
                     if(state.equals(stateName[i])){
                         voteNum = i;
@@ -99,7 +97,44 @@ public class mapMake {
      scan = new Scanner(file);       
     }
     
-
+    public void mapTurnout() throws FileNotFoundException{
+        scan = new Scanner(file);
+        scan.nextLine();
+        scan.nextLine();
+        stateNum = scan.nextInt();
+        scan.nextLine();        
+        scan.nextLine();
+        while(scan.hasNext()){
+            try{
+                state = scan.nextLine();
+                county = scan.nextLine();
+                terNum = scan.nextInt();
+                x = new double[terNum];
+                y = new double[terNum];
+                for(i = 0; i < terNum; i++){
+                    scan.nextLine();
+                    x[i] = scan.nextDouble();
+                    y[i] = scan.nextDouble();
+                }
+                i = 0;
+                for(i=0; i < stateName.length; i++){
+                    if(state.equals(stateName[i])){
+                        voteNum = i;
+                    }
+                }
+                StdDraw.setPenColor(votes[voteNum][0], votes[voteNum][2], votes[voteNum][1]);
+                StdDraw.filledPolygon(x, y);
+                scan.nextLine();
+                scan.nextLine();
+            }catch(InputMismatchException e){
+               scan.nextLine();
+            }
+        }
+     scan = new Scanner(file);       
+    }
+    
+    
+    
     public void getVotes(File f) throws FileNotFoundException{
         scanColor = new Scanner(f);
         scanColor.nextLine();
