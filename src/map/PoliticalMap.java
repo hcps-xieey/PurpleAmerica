@@ -48,11 +48,11 @@ public class PoliticalMap {
     String fInput = ""; 
     boolean isInputv = false; 
     
-    while(!isInputv){
+    while(!isInputv){ //loops until a valid input is received 
         System.out.println("Would you like to see Presidential Election or Senator Election? (Presidential/Senator)"); 
-        try{
+        try{ //tries to see if the input is Senator, if it is then it draws the senator map 
             fInput = sc.next(); 
-            if(fInput.equals("Senator")){
+            if(fInput.equals("Senator")){ //Checks if it is senator 
                 isInputv = true; 
                 File elect2 = new File("src/data/Senate2012.txt"); 
                 mapMake map2 = new mapMake(file, elect2);//creates mapmake object
@@ -61,7 +61,7 @@ public class PoliticalMap {
                 map2.mapBorder();
             }   
             
-            if(fInput.equals("Presidential")){
+            if(fInput.equals("Presidential")){ //If it is presidential, then it exits the loop and continues through the program
                 isInputv = true; 
             }
         } catch (InputMismatchException e){ //Catches the InputMismatchException
