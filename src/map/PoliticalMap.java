@@ -33,18 +33,18 @@ public class PoliticalMap {
         "SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"}; 
         //array with all the names of the States' abbreviations
     String finalYear = ""; 
-    Scanner sc = new Scanner(System.in); 
+    Scanner sc = new Scanner(System.in); //Initializes a scanner 
     boolean isInputvalid = false; 
-    while(!isInputvalid){
+    while(!isInputvalid){ //Loops until the input is valid 
         System.out.println("Enter the year that you would like to see: ");
         int year = sc.nextInt(); 
-        try {
+        try { //Trys to see if the input is between the valid years 
 
             if(year >= 1960 && year <= 2012){
                 isInputvalid = true; 
-                if(year % 4 == 0){
+                if(year % 4 == 0){ //Checks if the year is divisible by 4, only years that are divisible by 4 are correct
                         isInputvalid = true; 
-                         finalYear = year + ".txt";  
+                         finalYear = year + ".txt";  //Adds the year to be properly formatted for the file name 
                     } else {
                         System.out.println("That is not a valid input");
                         System.out.println("Your options are: 1960, 1964, 1968, 1972, 1976, 1980, 1992, 1996, 2000, 2004, 2008, 2012"); 
@@ -56,7 +56,7 @@ public class PoliticalMap {
                 isInputvalid = false; 
             }
 
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e){ //Catches the InputMismatchException 
             System.out.println("That is not a valid input"); 
             System.out.println("Your options are: 1960, 1964, 1968, 1972, 1976, 1980, 1992, 1996, 2000, 2004, 2008, 2012");
             
