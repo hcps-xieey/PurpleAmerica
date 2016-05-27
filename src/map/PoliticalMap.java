@@ -1,17 +1,28 @@
 /*
  * Political Map Project
- * Name: 
+ * Name: Bashir, Sree, Ethan 
  * Block: 6
  * 
  * Program Purpose:
- *
- * Algorithm:
+ *This program's purpose is to illustrate the election data visually on a map. 
+ *It does this by taking in the voting data and using an equation to generate the 
+ *RGB that is associated with it. Then the map is genenrated with or without the 
+ *counties and then is drawn. It is then filled in the correct RGB. The final result
+ *will be a map of the US with colors representing the election data. 
  * 
- * Future/possible improvements:
+ * Algorithm:
+ * Our algorithm was to modularize as much as possible and we made multiple classes
+ * to store different methods. For example, we have one class for the counties separate 
+ * from the one that draws the map without the counties. 
  *
+ * Future/possible improvements:
+ * One improvement we could've made was to comment and communicate much more on GIT Hub. 
+ * Our communication was very poor and we didn't utilize the tools that GIT Hub has. 
+ * We should've commented our code much earlier so that other members could use and 
+ * comprehend that code. 
  */
 package map;
-import edu.princeton.cs.introcs.*;
+import edu.princeton.cs.introcs.*; //Imports 
 import java.io.File;
 import java.util.*;
 /**
