@@ -102,7 +102,7 @@ public class CountiesMap {
     }
     
 
-    public void getVotes(File f) throws FileNotFoundException{
+    public void getVotes(File f, boolean isLoui) throws FileNotFoundException{
         scanColor = new Scanner(f);
         scanColor.nextLine();
         i = 0;
@@ -119,8 +119,12 @@ public class CountiesMap {
         while(scanColor.hasNext()){
             sVotes = scanColor.nextLine();
             ary = sVotes.split(",");
-            stateName[i] = ary[0];
-            
+            if(isLoui){
+            stateName[i] = (ary[0] + " Parish") ;
+                
+            }else{
+            stateName[i] = ary[0] ;
+            }
             ary2[0] = Double.parseDouble(ary[1]);
             ary2[1] = Double.parseDouble(ary[2]);
             ary2[2] = Double.parseDouble(ary[3]);
