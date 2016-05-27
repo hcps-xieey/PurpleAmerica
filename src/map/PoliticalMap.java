@@ -45,6 +45,30 @@ public class PoliticalMap {
         //array with all the names of the States' abbreviations
     String finalYear = ""; 
     Scanner sc = new Scanner(System.in); //Initializes a scanner 
+    String fInput = ""; 
+    boolean isInputv = false; 
+    
+    while(!isInputv){
+        System.out.println("Would you like to see Presidential Election or Senator Election? (Presidential/Senator)"); 
+        try{
+            fInput = sc.next(); 
+            if(fInput.equals("Senator")){
+                isInputv = true; 
+                File elect2 = new File("src/data/Senate2012.txt"); 
+                mapMake map2 = new mapMake(file, elect2);//creates mapmake object
+                map2.getVotes(elect);
+                map2.mapColor();
+                map2.mapBorder();
+            }   
+            
+            if(fInput.equals("Presidential")){
+                isInputv = true; 
+            }
+        } catch (InputMismatchException e){ //Catches the InputMismatchException
+            System.out.println("That is not a valid input. Please try again."); 
+        }
+    }
+        
     boolean isInputvalid = false; 
     while(!isInputvalid){ //Loops until the input is valid 
         System.out.println("Enter the year that you would like to see: ");
@@ -118,7 +142,7 @@ public class PoliticalMap {
     }    
     
     while(go){
-        System.out.println("Ok. Enter an eleciton year past 1980.");
+        System.out.println("Ok. Enter an election year past 1980.");
         int r = sc.nextInt();
         try{    
             if(r > 1979 && r < 2015 && r%2 == 0 ){//checks to see election year is available
